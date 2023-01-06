@@ -22,7 +22,7 @@ class PublicDomainCartoonsSkill(OVOSCommonPlaybackSkill):
                                                           "Help Translate Closed Captions"])
 
     def initialize(self):
-        bootstrap = f"https://raw.githubusercontent.com/OpenJarbas/streamindex/main/{self.archive.db.name}.json"
+        bootstrap = "https://github.com/JarbasSkills/skill-public-domain-cartoons/raw/dev/bootstrap.json"
         self.archive.bootstrap_from_url(bootstrap)
         self.schedule_event(self._sync_db, random.randint(3600, 24 * 3600))
 
