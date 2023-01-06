@@ -1,4 +1,5 @@
 from os.path import join, dirname
+import random
 
 from ovos_plugin_common_play.ocp import MediaType, PlaybackType
 from ovos_utils.log import LOG
@@ -23,9 +24,9 @@ class PublicDomainCartoonsSkill(OVOSCommonPlaybackSkill):
     def initialize(self):
         bootstrap = f"https://raw.githubusercontent.com/OpenJarbas/streamindex/main/{self.archive.db.name}.json"
         self.archive.bootstrap_from_url(bootstrap)
+        self.schedule_event(self._sync_db, random.randint(3600, 24 * 3600))
 
-        self.archive.setDaemon(True)
-        self.archive.start()
+    def _sync_db(self):
         urls = ["https://www.youtube.com/playlist?list=PLZZoPwq38bo4CtvoUyeFCBMP7xG4nOX5R",
                 "https://www.youtube.com/playlist?list=PLGmIBrtuJdtPK5BBGOznCGj-PZgGOMbWl",
                 "https://www.youtube.com/playlist?list=PLuNCpTRoV_LZcK5zLARj6GQrhMjCtUeKY",
@@ -33,7 +34,8 @@ class PublicDomainCartoonsSkill(OVOSCommonPlaybackSkill):
                 "https://www.youtube.com/user/CCCartoons/featured",
                 "https://www.youtube.com/playlist?list=PLAeYoq0n7c3YXKgMzQ__41m6nxOjveOSt"]
         for url in urls:
-            self.archive.monitor(url)
+            self.archive.parse_videos(url)
+        self.schedule_event(self._sync_db, random.randint(3600, 24*3600))
 
     # matching
     def match_skill(self, phrase, media_type):
