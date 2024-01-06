@@ -46,8 +46,7 @@ class PublicDomainCartoonsSkill(OVOSCommonPlaybackSkill):
                                   "cartoon_name", titles)
         self.register_ocp_keyword(MediaType.CARTOON,
                                   "cartoon_streaming_provider",
-                                  ["RetroToons", "RetroToon", "Retro Toon"])
-
+                                  ["PublicDomainCartoon", "Public Domain Cartoon"])
 
     def _sync_db(self):
         bootstrap = "https://github.com/JarbasSkills/skill-public-domain-cartoons/raw/dev/bootstrap.json"
