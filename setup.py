@@ -14,7 +14,7 @@ setup(
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
     package_dir={"skill_pd_cartoons": ""},
-    package_data={'skill_pd_cartoons': ['locale/*', 'ui/*']},
+    package_data={'skill_pd_cartoons': ['locale/*', 'res/*']},
     packages=['skill_pd_cartoons'],
     include_package_data=True,
     install_requires=["ovos_workshop~=0.0.5a1"],

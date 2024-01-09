@@ -13,7 +13,7 @@ from ovos_workshop.skills.common_play import OVOSCommonPlaybackSkill
 class PublicDomainCartoonsSkill(OVOSCommonPlaybackSkill):
     def __init__(self, *args, **kwargs):
         self.supported_media = [MediaType.CARTOON]
-        self.skill_icon = join(dirname(__file__), "ui", "pd-cartoons.png")
+        self.skill_icon = join(dirname(__file__), "res", "pd-cartoons.png")
         self.archive = JsonStorageXDG("PublicDomainToons", subfolder="OCP")
         super().__init__(*args, **kwargs)
 
